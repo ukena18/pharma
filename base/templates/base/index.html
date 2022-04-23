@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <section class="money-info"> 
+        <h3>{{is_paid_True | floatformat:2 }} paid money </h3>
+        <h3>{{is_paid_False | floatformat:2 }} unpaid money</h3>
+        
+    </section>
+    <main class="index-main">
+        <section class="most-recent">
+            <h5 class="section-title">Most REcent Customer</h5>
+            <div class="person-nav">
+                <h6>id</h6>
+                <h6>Name</h6>
+                <h6>description</h6>
+                <h6>Cost</h6>
+            </div>
+            <hr>
+            {% for order in most_recent_orders %}
+            <div class="last-person">
+                <h6><span>{{order.customer.id}}</span></h6>
+                <h6>{{order.customer.name}}<br> {{order.customer.last}}</h6>
+
+                <h6>{{order.description}}</h6>
+                {% if order.customer.total_owe.0 == 0 %}
+                    <h6 class="person-price">Paid by {{order.payment_method}}</h6>
+                {% elif order.customer.total_owe.0 != 0%}
+                    <h6 class="person-price">{{order.customer.total_owe.0}}</h6>
+                {% endif %}
+                <h6>
+                    <a class="search-button" href="{%url 'person' order.customer.id%}">
+                        <img src="{% static 'images/search.png' %}"  alt="search button">
+                        </a>
+                </h6>
+
+            </div>
+            {% endfor %}
+        </section>
+        <section class="past-due">
+            <h5 class="section-title">PAst Due Customer </h5>
+            <div class="person-nav">
+                <h6>id</h6>
+                <h6>Name</h6>
+
+                <h6>Description</h6>
+
+                <h6>Cost</h6>
+            </div>
+            <hr>
+            {% for order in past_due_orders %}
+                {% if order.is_paid is not True %}
+                 <div class="last-person">
+                    <h6><span>{{order.customer.id}}</span></h6>
+                    <h6>{{order.customer.name}}<br> {{order.customer.last}}</h6>
+                    <h6>{{order.description}}</h6>
+
+                    <h6>{{order.customer.total_owe.0}}</h6>
+                    <h6>
+                        <a class="search-button" href="{%url 'person' order.customer.id%}">
+                            <img src="{% static 'images/search.png' %}"  alt="search button">
+                            </a>
+                    </h6>
+
+                 </div>
+
+                {% endif %}
+            {% endfor %}
+
+        </section>
+        <section class="common-usage">
+            <h5 class="section-title">Common Usage </h5>
+            <div class="person-nav">
+                <h6>id</h6>
+                <h6>Name</h6>
+                <h6>Cost</h6>
+            </div>
+            <hr>
+            {% for customer in common_usage %}
+            <div class="last-person">
+                <h6><span>{{customer.id}}</span></h6>
+                <h6>{{customer.name}}<br> {{customer.last}} </h6>
+                {% if customer.total_owe.0 == 0 %}
+                    <h6 class="person-price">NO OWE</h6>
+                {% elif customer.total_owe.0 != 0%}
+                    <h6 class="person-price">{{customer.total_owe.0}}</h6>
+                {% endif %}
+                <h6>
+                    <a class="search-button" href="{%url 'person' customer.id%}">
+                        <img src="{% static 'images/search.png' %}"  alt="search button">
+                        </a>
+                </h6>
+
+            </div>
+            {% endfor %}
+
+        </section>
+    </main>
+{% endblock %}

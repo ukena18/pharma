@@ -1,0 +1,303 @@
+/* ##############SHARED ALL PAGE########## */
+
+/* Navbar list */
+.nav-list{
+    /* bluish color for backgroun */
+    background-color:#B2BEB5;
+    /* in same line you can put as much as you want it */
+    /* put all list items in straigth line */
+    display: flex;
+    /* justifiy content */
+    /* flex container, and the inline axis of a grid container */
+    /* equal distance from each other */
+    justify-content: space-around;
+    height: 30px;
+}
+/* navbar list each anchor tag */
+.nav-list li a{
+    /* no decoration */
+    text-decoration: none;
+    /* a little bit different color than white */
+    color: antiquewhite;
+}
+/* when you hover over anchor tag change color */
+/* and make font-size bigger */
+.nav-list li a:hover{
+    font-size: 1.1em;
+    color:aliceblue;
+
+}
+/* ##############SHARED ALL PAGE########## */
+/* app title in on top of navbar */
+.app-title{
+
+    /* grid-column-start: 1;
+    grid-column-end: 4; */
+    /* margin: auto; */
+    background-color:#879B5F;
+    /* background-color: yellow; */
+    text-align: center;
+}
+.money-info{
+    
+    display:flex;
+    justify-content: space-around;
+    margin:auto;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;
+    
+}
+
+.add-person-form,.add-order-form{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+}
+.add-order-basic, .inAdvance-payment, .add-person-form{
+    padding-top: 10px;
+    margin-left:  2rem;
+    row-gap: 5px;
+    display: grid;
+    grid-template-columns: 100px 200px;
+}
+.add-btn-container{
+    /* background-color: aqua; */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-items: center;
+    width: 300px; 
+}
+.add-order-btn, .add-person-btn{
+    margin-top: 10px;
+    position: relative;
+    padding: 10px;
+    left: 80%;
+}
+.add-person-btn{
+    margin-bottom: 5px;
+}
+
+/* hide payment screen */
+.inAdvance-payment{
+    visibility: visible;
+}
+/*  */
+.person-nav{
+    font-weight:bold;
+    font-size: 20px;
+    /* background-color: green; */
+    display: grid;
+    padding-left: 20px;
+    grid-template-columns: 50px 100px 100px 40px auto;
+}
+.person-nav h6{
+    margin-top:10px;
+    margin-right:2px ;
+}
+.last-person{
+    display: grid;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
+    grid-template-columns: 50px 100px 100px 40px auto;
+}
+.paid-transaction{
+    display: grid;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
+    grid-template-columns: 50px 100px 100px 150px 40px auto;
+}
+.person-order-list{
+    display: grid;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
+    grid-template-columns: 50px 100px 100px 100px auto;
+}
+
+.last-person:hover{
+    background-color: #B2BEB5;
+    font-size: 18px;
+    position: relative;
+    bottom:3px;
+    left:3px;
+}
+
+
+.edit-button{
+    width: 50px;
+    height: 20px;
+    background-color: bisque;
+}
+
+.search-button img{
+    width: 20px;
+    height: 20px;
+}
+
+.search-form{
+    margin-bottom: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.input-text{
+    height: 40px;
+    width: 300px;
+}
+.search-button-person{
+    margin-left: 10px;
+    margin-right:10px ;
+}
+
+.edit-form{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 150px 200px auto;
+    margin-bottom: 5px;
+}
+
+.add-order-button{
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 5px 5px darkgray;
+    padding: 10px;
+    height: 30px;
+    width: 70px;
+    background-color: beige;
+    margin:15px;
+}
+.edit-form input{
+    background-color:beige;
+}
+.edit-form h4{
+margin-left:12px;
+margin-bottom:5px;
+}
+.edit-form-id{
+font-size:34px;
+margin-top:5px;
+}
+.edit-form-input{
+    display:grid;
+    grid-template-columns: auto auto;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.edit-form-button{
+    margin-top:10px;
+    margin-bottom: 5px;
+    width: 70px;
+    position: relative;
+
+}
+
+.order-pay-button{
+margin-top: 20px;
+    width: 80px;
+    height: 40px;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.pay-button{
+    margin-top: 20px;
+    width: 15%;
+    height: 30%;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.total-amount{
+    display: flex;
+    /* background-color: yellow; */
+    justify-content: space-between;
+}
+.total-amount h2{
+    /* background-color:blueviolet; */
+    padding: 0px 10px;
+}
+
+.payment{
+    background-color: yellow;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+.payment input{
+    width: 100px;
+}
+.payment-button{
+    padding-top: 20px;
+    padding:0px 20px;
+    text-decoration: none;
+    color: cadetblue;
+    background-color: burlywood;
+}
+
+.index-main{
+    display:flex;
+    justify-content:space-between;
+    
+
+}
+
+.most-recent, .common-usage, .past-due{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;
+    
+}
+
+.section-title{
+    margin-bottom: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px grey;
+    font-size: 20px;
+    border-bottom:2px solid black ;
+}
+
+.most-recent{
+    margin-left:20px;
+}
+.common-usage{
+    margin-right: 20px;
+   /* background-color: violet; */
+}
+.past-due{
+    /* background-color:yellow; */
+
+}
+
+/* responsiive styles */
+
+@media screen and (min-width:1100px) {
+    .index-main{
+        width: 100%;
+        align-items: stretch;
+        flex-direction: row;
+    
+    }
+    .most-recent, .common-usage, .past-due{
+        flex: 1;
+        margin-right: 5px;
+
+    }
+
+    .person-nav h6{
+        font-size: 1.4vw;
+    }
+    .last-person{
+        font-size: 1.4vw;
+    }
+
+
+}

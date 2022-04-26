@@ -19,5 +19,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # base app urls
     path('', include('base.urls')),
+    # api urls
     path('api/', include('api.urls'))
 ]

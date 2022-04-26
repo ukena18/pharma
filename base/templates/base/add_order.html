@@ -1,50 +1,46 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block content %}
-    <main>
-        <form action="/add_order/{{customer.id}}/" method="POST" class="add-order-form">
-            {% csrf_token %}
-            <div class="add-order-basic">
-              <label for="name">Name:</label>
-            <input  class="input-text" type="text" id="name" name="name" value="{{ customer.name }}">
-            
-            <label for="name">LAst:</label>
-            <input  class="input-text" type="text" id="last" name="last" value="{{ customer.last }}">
-            
-            <label for="description">description:</label>
-            <input  class="input-text" type="text" id="description" name="description" placeholder="description" required>
-           
-            <label for="price">price:</label>
-            <input  class="input-text" type="text" id="price" name="price" placeholder="price" required>
-              
-              <div class="add-btn-container">
-                <input class="add-order-btn" type="submit" value="Add">
 
-              </div>
-            
+<main>
+  <form action="/add_order/{{customer.id}}/" method="POST" class="add-order-form">
+         {% csrf_token %}
+         <div class="add-order-container">
+         <label for="name">Name:</label>
+         <input  class="input-text" type="text" id="name" name="name" value="{{customer.name}}">
+         
+         <label for="last">Last:</label>
+         <input  class="input-text" type="text" id="last" name="last" value="{{customer.last}}">
+         
+         <label for="description">Descr:</label>
+         <input  class="input-text" type="text" id="description" name="description" placeholder="description" required>
+       
+         <label for="price">Price:</label>
+         <input  class="input-text" type="text" id="price" name="price" placeholder="price" required>
 
-            </div>
-            
-          
+         <label for="is_paid">Is paid: </label>
+         <input  class="input-text" type="checkbox" id="is_paid" name="is_paid">
 
-            <div class="inAdvance-payment">
-            <label for="price">Who paid:</label>
-            <input  class="input-text" type="text" id="whoPaid" list="whoPAid_list" name="whoPaid" placeholder="Who PAid">
-            <datalist id="whoPAid_list">
-              <option value="{{customer.name}}">
-              <option value="{{customer.parent.name}}">
-            </datalist>
-        
-            <label for="datePaid">Date paid: </label>
-            <input  class="input-text" type="date" id="datePaid" name="datePaid">
-            <label for="paymentMethod">Payment Method: </label>
-            <input  class="input-text" type="text" list="paymentMethod_list" id="paymentMethod" name="paymentMethod">
-            <datalist id="paymentMethod_list">
-              <option value="CASH">
-              <option value="CARD">
-            </datalist>
-            </div>
+         <label for="who_paid">Who paid:</label>
+         <input  class="input-text" type="text" id="who_paid" list="whoPaid_list" name="who_paid" placeholder="Who Paid">
+         <datalist id="whoPaid_list">
+           <option value="{{customer.name}}">
+           <option value="{{customer.parent.name}}">
+         </datalist>
 
-        </form>
-    </main>
+         <label for="payment_method">Method: </label>
+         <input  class="input-text" type="text" list="paymentMethod_list" id="payment_method" name="payment_method">
+         <datalist id="paymentMethod_list">
+           <option value="CASH">
+           <option value="CARD">
+         </datalist>
+         <button class="add-button search-button">ADD</button>
+       </div>
+   </form>
+</main>
+
+
+
+
+
 {% endblock %}

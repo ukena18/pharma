@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
+from django.utils import timezone
 
 
 # create the customer for pharmacy
@@ -47,11 +48,13 @@ class Order(models.Model):
     payment_method_list = [("CASH","CASH"),("CARD","CARD")]
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE,null=True,blank=True,)
     who_paid = models.ForeignKey(Customer,on_delete=models.CASCADE,null=True,blank=True, related_name='%(class)s_requests_created')
+    who_took_money = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True, related_name='who_took_money')
 
-    date_created = models.DateTimeField(blank=True,null=True)
+
     payment_method = models.CharField(choices=payment_method_list,max_length=4,default="CASH",blank=True,null=True)
-
     date_paid = models.DateTimeField(blank=True,null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_modified = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     is_paid = models.BooleanField(default=False, blank=True,null=True)
     customer_total_when_paid = models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)

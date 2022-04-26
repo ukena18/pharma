@@ -1,0 +1,362 @@
+/* App title */ 
+/* Pharmacy App */
+.app-title{
+    color:antiquewhite;
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    text-align: center;
+}
+/* App title end */
+
+
+/* Navbar */
+.nav-list{
+    /* bluish color for backgroun */
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    /* in same line you can put as much as you want it */
+    /* put all list items in straigth line */
+    display: flex;
+    color:antiquewhite;
+    /* justifiy content */
+    /* flex container, and the inline axis of a grid container */
+    /* equal distance from each other */
+    justify-content: space-around;
+    padding-top: 5px;
+    height: 30px;
+}
+/* navbar list each anchor tag */
+.nav-list li a{
+    /* no decoration */
+    text-decoration: none;
+    /* a little bit different color than white */
+    color: antiquewhite;
+}
+/* when you hover over anchor tag change color */
+/* and make font-size bigger */
+.nav-list li a:hover{
+    font-size: 1.2em;
+    color:#6ddce8 ;
+
+}
+/* Navbar end */
+
+
+/* GENERAL INPUT TEXT */
+.input-text{
+    font-size:18px;
+    height: 40px;
+    width: 300px;
+}
+
+
+
+/* ADD ORDER AND ADD PERSON STYLES */
+.add-order-form{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+}
+.add-order-container{
+    max-width: 550px;
+    margin: auto;
+    padding-top: 10px;
+    row-gap: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.add-order label{
+    font-size: 18px;
+    margin: auto 0px;
+ 
+
+}
+
+.search-button{
+    border: none;
+    box-shadow: 0 4px #999;
+    color:#36454F;
+    border-radius: 15px;
+    outline: none;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right:10px;
+    width: 100px;    
+    height: 40px;
+    font-size:20px;
+    background-color: bisque;
+}
+.search-button:active {
+    background-color: #e9ffdb;
+    box-shadow: 0 5px #666;
+    transform: 1px;
+}
+.add-button{
+    margin:20px auto;
+    position: relative;
+    left:300px;
+}
+/* ADD ORDER AND ADD PERSON STYLES END */
+
+/* Search form */
+.search-form{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;   
+    margin-bottom: 10px;
+    display:flex;
+    
+    justify-content: stretch;
+    align-items: center; 
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.search-button{
+    border: none;
+    box-shadow: 0 4px #999;
+    color:#36454F;
+    border-radius: 15px;
+    outline: none;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right:10px;
+    width: 100px;    
+    height: 40px;
+    font-size:20px;
+    background-color: bisque;
+}
+.search-button:active {
+    background-color: #e9ffdb;
+    box-shadow: 0 5px #666;
+    transform: 1px;
+}
+.search-button img{
+    width: 20px;
+    height: 20px;
+}
+/* Search form END */
+
+
+/* profile edit form */
+.order-container{
+    flex:1;
+    display: grid;
+    grid-template-columns: auto;
+    margin:auto;
+    row-gap: 10px;
+    justify-content: center;
+    align-items:center      
+}
+.order-container h6{
+    font-size:24px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+.edit-container{
+    flex:4;
+    max-width: 800px;
+    margin:auto;
+    display: grid;
+    grid-template-columns:repeat(2,350px);
+    row-gap:10px;
+            
+           
+}
+/* profile edit form end */
+
+
+/* People List */
+/* People List */
+/* People List */
+/* People List */
+.people-list{
+    width:100%;
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;
+}
+.people-list .section-title{
+    padding:5px 10px;
+    font-size:20px;
+    margin-bottom: 0;
+}
+
+/* Single PErson-nav in People list */
+.single-person-nav{
+    margin:auto;
+    display: grid;
+    padding-left: 20px;
+    grid-template-columns: repeat(4,400px);
+}
+.single-person-nav h6,.most-recent-nav h6, .all-dependents-nav h6, .transactions-history-nav h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:normal;
+    margin-top: 15px;
+    font-size: 25px;
+    margin-bottom:0;
+}
+/* Single PErson-nav End in People list */
+
+/* Single PErson in People list */
+.single-person h6{
+    font-size: 15px;
+    margin-bottom:5px;
+    margin-top: 15px;
+}
+
+.single-person:hover{
+    background-color: #B2BEB5;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    bottom:3px;
+    left:3px;
+}
+/* Single PErson END in People list */
+
+/* People LIst End */
+/* People LIst End */
+/* People LIst End */
+/* People LIst End */
+
+
+/* MOSt REcent TRAnsactions */
+.most-recent-nav{
+    margin:auto;
+    display: grid;
+    padding-left: 20px;
+    max-width: 1320px;
+    
+    grid-template-columns: repeat(3,300px) 200px repeat(3,80px);
+}
+.most-recent-nav .search-button,.all-dependents-nav .search-button,.transactions-history-nav .search-button {
+ width:50px;
+ height:20px;
+ font-size: 15px;
+ margin-left:0px;
+ margin-right:0;
+}
+.most-recent-nav .search-button:active {
+    background-color: #e9ffdb;
+    box-shadow: 0 5px #666;
+    transform: 1px;
+}
+/* MOSt REcent TRAnsactions  END */
+
+/* ALL dependents  */
+.all-dependents-nav{
+    margin:auto;
+    display: grid;
+    padding-left: 20px;
+    max-width: 1320px;  
+    grid-template-columns: repeat(3,300px) repeat(3,80px);
+}
+
+/* ALL dependents END */
+
+
+/* Transactions History  */
+.transactions-history-nav{
+    margin:auto;
+    display: grid;
+    padding-left: 20px;
+    max-width: 1320px;
+    grid-template-columns: repeat(5,200px) 100px repeat(3,80px);
+}
+
+/* Transactions History  END */
+
+/* total amount  */
+.total-amount, .money-info{
+    display: flex;
+    justify-content: space-around;
+}
+.total-amount h2, .money-info h3{
+    padding: 0px 10px;
+}
+
+/* total amount  END */
+
+
+
+@media screen and (max-width:1270px) {
+    /* most recent app  */
+    .most-recent-nav{
+        grid-template-columns: repeat(3,210px) 180px repeat(3,80px);
+    }
+    .single-person-nav h6,.most-recent-nav h6, .all-dependents-nav h6, .transactions-history-nav h6 {
+        font-size: 24px;
+    }
+    /* ALL dependents  */
+    .all-dependents-nav{
+        grid-template-columns: repeat(3,270px) repeat(3,80px);
+    }
+
+    /* ALL dependents END */
+
+
+    /* Transactions History  */
+    .transactions-history-nav{
+        grid-template-columns: repeat(5,170px) 100px repeat(3,80px);
+    }
+
+
+}
+@media screen and (max-width:979px) {
+    /* most recent app  */
+    .most-recent-nav{
+        grid-template-columns: repeat(3,170px) 120px repeat(3,80px);
+    }
+    .single-person-nav h6,.most-recent-nav h6, .all-dependents-nav h6, .transactions-history-nav h6 {
+        font-size: 18px;
+    }
+     /* ALL dependents  */
+     .all-dependents-nav{
+        grid-template-columns: repeat(3,208px) repeat(3,80px);
+    }
+    
+    /* Transactions History  */
+    .transactions-history-nav{
+        grid-template-columns: repeat(5,140px) 100px repeat(3,80px);
+    }
+
+}
+@media screen and (max-width:754px) {
+    /* most recent app  */
+    .most-recent-nav{
+        grid-template-columns: repeat(3,120px) 80px repeat(3,80px);
+    }
+    .single-person-nav h6,.single-person h6,.most-recent-nav h6, .all-dependents-nav h6, .transactions-history-nav h6 {
+        font-size: 12px;
+    }
+    /* ALL dependents  */
+    .all-dependents-nav{
+    grid-template-columns: repeat(3,145px) repeat(3,80px);
+    }
+   
+    /* Transactions History  */
+    .transactions-history-nav{
+        grid-template-columns: repeat(5,105px) 80px repeat(3,80px);
+    }
+}
+@media screen and (max-width:518px) {
+    /* most recent app  */
+    .most-recent-nav{
+        grid-template-columns: repeat(8,70px);
+    }
+    .single-person-nav h6,.single-person h6, .most-recent-nav h6, .all-dependents-nav h6, .transactions-history-nav h6 {
+        font-size: 13px;
+    }
+    /* ALL dependents  */
+    .all-dependents-nav{
+        grid-template-columns: repeat(3,90px) repeat(3,80px);
+        }
+    
+    /* Transactions History  */
+    .transactions-history-nav{
+        grid-template-columns: repeat(5,80px) 80px repeat(3,80px);
+    }
+           
+   
+}

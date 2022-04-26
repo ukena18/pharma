@@ -1,13 +1,15 @@
+# get the models from base app
 from base.models import Customer, Order
+# serializers library
 from rest_framework import serializers
 
-
+# Customer serializers
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = "__all__"
 
-
+# order serializers
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order

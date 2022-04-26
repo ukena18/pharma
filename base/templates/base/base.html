@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Pharmacy App</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
     <header>
-        <h1 class="app-title">PHarmacy APP</h1>
-
+        <h1 class="app-title">Pharmacy APP</h1>
     </header>
+ 
     <nav class="navbar">
         <ul class="nav-list">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'search_person' %}">Look For Person</a></li>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'search' %}">Search Person</a></li>
             <li><a href="{% url 'add_person' %}">Add Person</a></li>
-            <li><a href="#">Check Last Activity</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout_page' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login_page' %}">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% block content %}
@@ -26,3 +30,8 @@
 <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
+
+
+
+
+

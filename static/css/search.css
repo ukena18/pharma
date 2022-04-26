@@ -1,0 +1,156 @@
+/* App title */ 
+/* Pharmacy App */
+.app-title{
+    color:antiquewhite;
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    text-align: center;
+}
+/* App title end */
+
+
+/* Navbar */
+.nav-list{
+    /* bluish color for backgroun */
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    /* in same line you can put as much as you want it */
+    /* put all list items in straigth line */
+    display: flex;
+    color:antiquewhite;
+    /* justifiy content */
+    /* flex container, and the inline axis of a grid container */
+    /* equal distance from each other */
+    justify-content: space-around;
+    padding-top: 5px;
+    height: 30px;
+}
+/* navbar list each anchor tag */
+.nav-list li a{
+    /* no decoration */
+    text-decoration: none;
+}
+/* when you hover over anchor tag change color */
+/* and make font-size bigger */
+.nav-list li a:hover{
+    font-size: 1.2em;
+    color:#6ddce8 ;
+
+}
+/* Navbar end */
+
+
+/* Search form */
+.search-form{
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;   
+    margin-bottom: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.search-input-text{
+    font-size:18px;
+    height: 40px;
+    width: 300px;
+}
+.search-button{
+    border: none;
+    box-shadow: 0 4px #999;
+    color:#36454F;
+    border-radius: 15px;
+    outline: none;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right:10px;
+    width: 100px;    
+    height: 40px;
+    font-size:20px;
+    background-color: bisque;
+}
+.search-button:active {
+    background-color: #e9ffdb;
+    box-shadow: 0 5px #666;
+    transform: 1px;
+}
+
+/* Search form end */
+
+
+/* People List */
+/* People List */
+/* People List */
+/* People List */
+.people-list{
+    width:100%;
+    background-image: linear-gradient(to bottom right, #879B5F, green);
+    box-shadow: 10px 10px lightblue;
+}
+.people-list .section-title{
+    padding:5px 10px;
+}
+
+/* Single PErson-nav in People list */
+.single-person-nav{
+    margin:auto;
+    display: grid;
+    padding-left: 20px;
+    grid-template-columns: repeat(4,400px);
+}
+.single-person-nav h6{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:normal;
+    margin-top: 15px;
+    font-size: 25px;
+    margin-bottom:0;
+}
+/* Single PErson-nav End in People list */
+
+/* Single PErson in People list */
+.single-person h6{
+    font-size: 15px;
+    margin-bottom:5px;
+    margin-top: 15px;
+}
+.single-person:hover{
+    background-color: #B2BEB5;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    bottom:3px;
+    left:3px;
+}
+/* Single PErson END in People list */
+
+/* People LIst */
+/* People LIst */
+/* People LIst */
+/* People LIst */
+
+@media screen and (max-width:1270px) {
+    .single-person-nav{
+        grid-template-columns: repeat(4,300px);
+        
+    }
+}
+@media screen and (max-width:949px) {
+    .single-person-nav{
+        grid-template-columns: repeat(4,200px);
+    }
+
+}
+@media screen and (max-width:680px) {
+    .single-person-nav{
+        grid-template-columns: repeat(4,150px);
+    }
+   
+}
+@media screen and (max-width:400px) {
+    .single-person-nav{
+        grid-template-columns: repeat(4,100px);
+    }
+   
+}

@@ -1,0 +1,108 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <form method="POST" action="/person_name_change/{{customer.id}}/" class="search-form edit-form">
+        {% csrf_token %}
+        <div class="order-container">
+            <a class="search-button" style="width:100%;" href="{% url 'add_order' customer.id %}">Add Order</a>
+            <h6>{{customer.id}}</h6>
+             
+        </div>
+        <div class="edit-container">
+            
+            <input class="input-text" type="text" id="name" name="name" value="{{customer.name}}">
+            <input class="input-text" type="text" id="parent_id" name="parent_id" placeholder="Type Parent ID">
+            <input class="input-text" type="text" id="last" name="last" value="{{customer.last}}">
+            <input class="search-button" type="submit" value="Change">
+        </div>
+    </form>
+    <section class="people-list">
+        <h5 class="section-title">Most REcent Transactions</h5>
+        <div class="most-recent-nav">
+            <h6>Id</h6>
+            <h6>Name</h6>
+            <h6>Description</h6>
+            
+            <h6>Price</h6>
+            <h6>Method</h6>
+         
+        </div>
+        <hr>
+        {% for order in orders %}
+            {% if not order.is_paid %}
+                <div class="single-person most-recent-nav" id="person-div-{{order.id}}">
+                    <h6><span>{{order.customer.id}}</span></h6>
+                    <h6 class="name-tag">{{order.customer.name}} {{order.customer.last}}</h6>
+                        <h6 >{{order.description}}</h6>
+                        <h6 >{{order.price}} $</h6>
+                        <button id="pay-cash-{{order.id}}" onclick=pay_now({{order.id}},"cash") name="pay-cash-{{order.id}}" class="search-button">pCash</button>
+                        <button id="pay-card-{{order.id}}" onclick=pay_now({{order.id}},"card") name="pay-card-{{order.id}}" class="search-button">pCard</button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+    <section class="people-list">
+        <h5 class="section-title">All Dependents</h5>
+        <div class="all-dependents-nav ">
+            <h6>Id</h6>
+            <h6>Name</h6>
+            <h6>Price</h6>
+            <h6>Method</h6>
+        </div>
+        <hr>
+        {% for child in children %}
+            <div class="single-person all-dependents-nav" id="person-div-{{child.id}}">
+                <h6><span>{{child.id}}</span></h6>
+                <h6 class="name-tag">{{child.name}} {{child.last}} </h6>
+                {% if child.total_owe.0 == 0 %}
+                    <h6 class="person-price">NO OWE</h6>
+                {% elif child.total_owe.0 != 0%}
+                    <h6 class="person-price">{{child.total_owe.0|floatformat:2}}</h6>
+                {% endif %}
+                <button id="pay-{{child.id}}" onclick=child_pay({{child.id}})  name="pay-{{child.id}}" class="search-button">Pay</button>
+
+            </div>
+        {% endfor %}
+    </section>
+   
+    <section class="total-amount">
+        <h2>total amount:</h2>
+        <h2 id="show-total-amount">{{customer.total_owe.0|floatformat:2}} $</h2>
+    </section>
+
+       
+
+    <section class="people-list">
+        <h5 class="section-title">Transactions History</h5>
+        <div class="transactions-history-nav">
+            <h6>Id</h6>
+            <h6>Name</h6>
+            <h6>Description</h6>
+            <h6>Date paid</h6>
+            
+            <h6>Cost</h6>
+         
+        </div>
+        {% for order in orders %}
+        <div class="single-person transactions-history-nav">
+            <h6><span>{{order.customer.id}}</span></h6>
+            <h6 class="name-tag">{{order.customer.name}} {{order.customer.last}} </h6>
+                <h6 >{{order.description}}</h6>
+                <h6>{{order.date_paid}}</h6>
+               
+                {% if  order.is_paid %}
+                <h6 class="person-price">+{{order.price}}</h6>
+                <h6>{{order.customer_total_when_paid}}</h6>
+                {% else %}
+                <h6 class="person-price">-{{order.price}}</h6>
+                <h6>{{order.customer_total_when_created}}</h6>
+                {% endif %}
+                
+        </div>
+        {% endfor %}
+
+    </section>
+</main>
+{% endblock %}

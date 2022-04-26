@@ -1,24 +1,24 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block content %}
-    <main>
-        <form action="/add_person/" method="POST" class="add-person-form">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input  class="input-text" type="text" id="name" name="name" placeholder="type a name">
- 
-            <label for="last">last:</label>
-            <input  class="input-text" type="text" id="last" name="last" placeholder="type a your last name">
-        
-             <label for="description">describtion:</label>
-            <input  class="input-text" type="text" id="description" name="description" placeholder="description">
-         
-            <label for="price">price:</label>
-            <input  class="input-text" type="text" id="price" name="price" placeholder="price">
-            <div class="add-btn-container">
-                <input class="add-person-btn" type="submit" value="Add">
+<main>
+    <form action="/add_person/" method="POST" class="add-order-form">
+        {% csrf_token %}
+        <div class="add-order-container">
+        <label for="name">Name:</label>
+        <input  class="input-text" type="text" id="name" name="name" placeholder="type a name">
 
-              </div>
-        </form>
-    </main>
+        <label for="last">last:</label>
+        <input  class="input-text" type="text" id="last" name="last" placeholder="type a your last name">
+    
+         <label for="description">describtion:</label>
+        <input  class="input-text" type="text" id="description" name="description" placeholder="description">
+     
+        <label for="price">price:</label>
+        <input  class="input-text" type="text" id="price" name="price" placeholder="price">
+        <button class="add-button search-button">ADD</button>
+        </div>
+    </form>
+</main>
+
 {% endblock %}

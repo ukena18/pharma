@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<main clss="search-main">
+    <form action="/search/" method="POST" class="search-form">
+        {% csrf_token %}
+        <input class="input-text" type="text" id="search" name="search" placeholder="type a name and last">
+        <input class="search-button" type="submit" value="Search">
+    </form>
+      <section class="people-list">
+        <h5 class="section-title">People List</h5>
+        <div class="single-person-nav">
+            <h6>Id</h6>
+            <h6>Name</h6>
+            <h6>Cost</h6>
+        </div>
+        <hr>
+          {% for customer in customers %}
+                <div class="single-person single-person-nav">
+                    <h6><span>{{customer.id}}</span></h6>
+                    <h6 class="name-tag">{{customer.name}} {{customer.last}} </h6>
+                        {% if customer.total_owe.0 == 0 %}
+                            <h6 class="person-price">NO OWE</h6>
+                        {% elif customer.total_owe.0 != 0%}
+                            <h6 class="person-price">{{customer.total_owe.0|floatformat:2 }}</h6>
+                        {% endif %}
+                        <h6>
+                            <a class="search-button" href="{%url 'profile' customer.id%}">
+                                <img src="{% static 'images/search.png' %}"  alt="search button">
+                            </a>
+                        </h6>
+                </div>
+          {% endfor %}
+
+    </section>
+</main>
+
+{% endblock %}

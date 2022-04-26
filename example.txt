@@ -1,0 +1,194 @@
+        HINT: Add or change a related_name argument to the definition for 'base.Order.customer' or 'base.Order.who_paid'.
+base.Order.who_paid: (fields.E304) Reverse accessor for 'base.Order.who_paid' clashes with reverse accessor for 'base.Order.customer'.
+        HINT: Add or change a related_name argument to the definition for 'base.Order.who_paid' or 'base.Order.customer'.
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> ^C
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py makemigrations
+Migrations for 'base':
+  base\migrations\0004_order_customer2_order_date_created_order_date_paid_and_more.py
+    - Add field customer2 to order
+    - Add field date_created to order
+    - Add field date_paid to order
+    - Add field is_paid to order
+    - Add field who_paid to order
+    - Alter field customer on order
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py makemigrations
+Migrations for 'base':
+  base\migrations\0005_remove_order_customer2_alter_order_who_paid.py
+    - Remove field customer2 from order
+    - Alter field who_paid on order
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+Running migrations:
+  Applying base.0004_order_customer2_order_date_created_order_date_paid_and_more... OK
+  Applying base.0005_remove_order_customer2_alter_order_who_paid... OK
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma>
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py makemigrations
+Migrations for 'base':
+  base\migrations\0006_remove_order_date.py
+    - Remove field date from order
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+Running migrations:
+  Applying base.0006_remove_order_date... OK
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py makemigrations
+Migrations for 'base':
+  base\migrations\0007_remove_order_who_paid_alter_order_customer.py
+    - Remove field who_paid from order
+    - Alter field customer on order
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+Running migrations:
+  Applying base.0007_remove_order_who_paid_alter_order_customer... OK
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py makemigrations
+Migrations for 'base':
+  base\migrations\0008_order_who_paid.py
+    - Add field who_paid to order
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+Running migrations:
+  Applying base.0008_order_who_paid... OK         python manage.py migrate
+Operations to perform:et\Desktop\pharmacy\pharma> python manage.py migrate
+  Apply all migrations: admin, auth, base, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+(venv) PS C:\Users\homet\Desktop\pharmacy\pharma> python manage.py shell
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from base.models import Customer, Order
+>>> import datetime
+>>> datetime.now()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: module 'datetime' has no attribute 'now'
+>>> datetime.datetime.now()
+datetime.datetime(2022, 4, 15, 10, 36, 5, 585042)
+>>> datetime.datetime.now
+<built-in method now of type object at 0x00007FFD24C9EF10>
+>>> datetime.datetime.now()
+datetime.datetime(2022, 4, 15, 10, 36, 12, 15566)
+>>> from datetime import datetime
+>>> order = Order.objects.filter(date_created__gt=datetime.date(2022,4,1))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: descriptor 'date' for 'datetime.datetime' objects doesn't apply to a 'int' object
+>>> order = Order.objects.filter(date_created__gt=datetime.date(2022,4,1))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: descriptor 'date' for 'datetime.datetime' objects doesn't apply to a 'int' object
+>>> me = datetime.date(1992,2,1)\
+...
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: descriptor 'date' for 'datetime.datetime' objects doesn't apply to a 'int' object
+>>> me = datetime(1992,2,1)
+>>> me
+datetime.datetime(1992, 2, 1, 0, 0)
+>>> order = Order.objects.filter(date_created__gt=datetime(2022,4,1))
+>>> order
+<QuerySet [<Order: parol>, <Order: knee cream>, <Order: headache>, <Order: toothache>]>
+>>> order = Order.objects.filter(date_created__gt=datetime(2022,4,1))
+>>> order
+<QuerySet [<Order: parol>, <Order: knee cream>, <Order: headache>]>
+>>> me = datetime.timedelta(months=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+>>> from datetime import datetime as dt
+>>> import datetime
+>>> me = datetime.timedelta(months=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'months' is an invalid keyword argument for __new__()
+>>> me = datetime.timedelta(month=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'month' is an invalid keyword argument for __new__()
+>>> me = datetime.timedelta(days=1)
+>>> me
+datetime.timedelta(days=1)
+>>> me = datetime.timedelta(months=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'months' is an invalid keyword argument for __new__()
+>>> me = datetime.timedelta(days=30)
+>>> answer =dt-me
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: unsupported operand type(s) for -: 'type' and 'datetime.timedelta'
+>>> answer =dt.now()-me
+>>> anwer
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'anwer' is not defined
+>>> answer
+datetime.datetime(2022, 3, 16, 10, 44, 21, 995801)
+>>> dt.now()
+datetime.datetime(2022, 4, 15, 10, 44, 37, 356808)
+>>> customers = Customer.objects.all().order_by("customer__order__count")
+>>> customer
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'customer' is not defined
+>>> customers
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\query.py", line 296, in __repr__
+    data = list(self[: REPR_OUTPUT_SIZE + 1])
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1348, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 573, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup()
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 65, in pre_sql_setup
+    order_by = self.get_order_by()
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 415, in get_order_by
+    for expr, is_ref in self._order_by_pairs():
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 397, in _order_by_pairs
+    yield from self.find_ordering_name(
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 900, in find_ordering_name
+    return [
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\compiler.py", line 901, in <listcomp>
+    (OrderBy(transform_function(t, alias), descending=descending), False)
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\query.py", line 1796, in transform
+    return self.try_transform(wrapped, name)
+  File "C:\Users\homet\Desktop\pharmacy\venv\lib\site-packages\django\db\models\sql\query.py", line 1311, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'count' for BigAutoField or join on the field not permitted, perhaps you meant contains?
+>>> customers = Customer.objects.all().order_by("customer__order__count")
+>>> customers = Customer.objects.annotate(num_orders=Count('order'))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Count' is not defined
+>>> from django.db.models import Count
+>>> customers = Customer.objects.annotate(num_orders=Count('order'))
+>>> customers
+<QuerySet [<Customer: azra>, <Customer: ramazan>, <Customer: zehra dilsah>]>
+>>> customers = Customer.objects.annotate(num_orders=Count('order'))
+>>> customers
+<QuerySet [<Customer: azra>, <Customer: ramazan>, <Customer: zehra dilsah>]>
+>>> customers[0]
+<Customer: azra>
+>>> customers[0].num_orders
+2
+>>> customers[2].num_orders
+3
+>>> customers[1].num_orders
+2
+>>> customers = Customer.objects.annotate(num_orders=Count('order'))
+>>> customers.order_by('-num_orders')
+<QuerySet [<Customer: zehra dilsah>, <Customer: azra>, <Customer: ramazan>]>
+>>> customers.order_by('-num_orders')
+<QuerySet [<Customer: zehra dilsah>, <Customer: ramazan>, <Customer: azra>]>
+>>>

@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <form action="/login_page/" method="POST" class="add-order-form">
+        {% csrf_token %}
+          <div class="add-order-container">
+          <label for="email">Email:</label>
+          <input  class="input-text" type="text" id="email" name="email" placeholder="Type an email">
+          
+          <label for="password">Password:</label>
+          <input  class="input-text" type="password" id="password" name="password" placeholder="Type a password">
+
+          <button class="add-button search-button">ADD</button>
+        </div>
+    </form>
+</main>
+{% endblock %}
+

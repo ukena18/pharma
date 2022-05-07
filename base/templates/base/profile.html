@@ -3,21 +3,20 @@
 {% block content %}
 
 <main>
-    <form method="POST" action="/person_name_change/{{customer.id}}/" class="search-form edit-form">
+    <div class="search-form edit-form">
         {% csrf_token %}
         <div class="order-container">
-            <a class="search-button" style="width:100%;" href="{% url 'add_order' customer.id %}">Add Order</a>
+            <a class="search-button" style="width:100%;" href="{% url 'order_add' customer.id %}">Add Order</a>
             <h6>{{customer.id}}</h6>
-             
         </div>
         <div class="edit-container">
-            
             <input class="input-text" type="text" id="name" name="name" value="{{customer.name}}">
-            <input class="input-text" type="text" id="parent_id" name="parent_id" placeholder="Type Parent ID">
+            <input class="input-text" type="text" id="parent_id" name="parent_id" value="{{customer.parent_id}}">
             <input class="input-text" type="text" id="last" name="last" value="{{customer.last}}">
-            <input class="search-button" type="submit" value="Change">
+            <button id="name_change" onClick=name_change({{customer.id}}) name="name_change" class="search-button">Update</button>
+            
         </div>
-    </form>
+    </div>
     <section class="people-list">
         <h5 class="section-title">Most REcent Transactions</h5>
         <div class="most-recent-nav">
@@ -37,8 +36,8 @@
                     <h6 class="name-tag">{{order.customer.name}} {{order.customer.last}}</h6>
                         <h6 >{{order.description}}</h6>
                         <h6 >{{order.price}} $</h6>
-                        <button id="pay-cash-{{order.id}}" onclick=pay_now({{order.id}},"cash") name="pay-cash-{{order.id}}" class="search-button">pCash</button>
-                        <button id="pay-card-{{order.id}}" onclick=pay_now({{order.id}},"card") name="pay-card-{{order.id}}" class="search-button">pCard</button>
+                        <button id="pay-cash-{{order.id}}" onclick=order_pay({{order.id}},"CASH") name="pay-cash-{{order.id}}" class="search-button">pCash</button>
+                        <button id="pay-card-{{order.id}}" onclick=order_pay({{order.id}},"CARD") name="pay-card-{{order.id}}" class="search-button">pCard</button>
                 </div>
             {% endif %}
         {% endfor %}
@@ -61,7 +60,9 @@
                 {% elif child.total_owe.0 != 0%}
                     <h6 class="person-price">{{child.total_owe.0|floatformat:2}}</h6>
                 {% endif %}
-                <button id="pay-{{child.id}}" onclick=child_pay({{child.id}})  name="pay-{{child.id}}" class="search-button">Pay</button>
+                <button id="child_pay-cash-{{child.id}}" onclick=child_pay({{child.id}},"CASH") name="child-pay-cash-{{child.id}}" class="search-button">pCash</button>
+                <button id="child_pay-card-{{child.id}}" onclick=child_pay({{child.id}},"CARD") name="child-pay-card-{{child.id}}" class="search-button">pCard</button>
+                
 
             </div>
         {% endfor %}

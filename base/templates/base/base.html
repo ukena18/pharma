@@ -17,7 +17,7 @@
         <ul class="nav-list">
             <li><a href="{% url 'homepage' %}">Home</a></li>
             <li><a href="{% url 'search' %}">Search Person</a></li>
-            <li><a href="{% url 'add_person' %}">Add Person</a></li>
+            <li><a href="{% url 'person_add' %}">Add Person</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'logout_page' %}">Logout</a></li>
             {% else %}

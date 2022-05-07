@@ -8,7 +8,7 @@
 </section>
 <main class="index-main">
         <section class="people-list">
-            <h5 class="section-title">Most REcent Transactions</h5>
+            <h5 class="section-title">Most REcent Order Transactions</h5>
             <div class="most-recent-nav">
                 <h6>Id</h6>
                 <h6>Name</h6>
@@ -23,10 +23,10 @@
                 <h6><span>{{order.customer.id}}</span></h6>
                 <h6 class="name-tag">{{order.customer.name}} {{order.customer.last}} </h6>
                 <h6 >{{order.description}}</h6>
-                {% if order.customer.total_owe.0 == 0 %}
+                {% if order.is_paid %}
                 <h6 class="person-price">Paid by {{order.payment_method}}</h6>
-                {% elif order.customer.total_owe.0 != 0%}
-                <h6 class="person-price">{{order.customer.total_owe.0|floatformat:2}}</h6>
+                {% elif not order.is_paid%}
+                <h6 class="person-price">{{order.price|floatformat:2}}</h6>
                 {% endif %}
                 <a class="search-button" href="{%url 'profile' order.customer.id%}">
                     <img src="{% static 'images/search.png' %}"  alt="search button">

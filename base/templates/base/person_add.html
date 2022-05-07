@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <main>
-    <form action="/add_person/" method="POST" class="add-order-form">
+    <form action="/person_add/" method="POST" class="add-order-form">
         {% csrf_token %}
         <div class="add-order-container">
         <label for="name">Name:</label>

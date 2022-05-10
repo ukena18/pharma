@@ -40,21 +40,21 @@ def homepage(request):
     # paid money
     is_paid_True = md.Order.objects.filter(is_paid=True).aggregate(Sum('price'))
     #### most recent Transactions
-    most_recent_orders = md.Order.objects.order_by('-date_created')
+    most_recent_orders = md.Order.objects.order_by('-date_created')[0:10]
     #### mos recent Transactions
     ############## past Due
     past_due_days = datetime.timedelta(days=30)
     today_date = zt.now()
     past_due_date = today_date - past_due_days
     # print(past_due_date)
-    past_due_orders = md.Order.objects.filter(date_created__lt=past_due_date)
+    past_due_orders = md.Order.objects.filter(date_created__lt=past_due_date)[0:10]
     # print(past_due_orders)
     ############# past due
 
     ###### common_usage
     from django.db.models import Count
     common_usage = md.Customer.objects.annotate(num_orders=Count("order"))
-    common_usage = common_usage.order_by('-num_orders')
+    common_usage = common_usage.order_by('-num_orders')[0:10]
     print(common_usage)
 
     most_recent_orders_api = OrderSerializer(most_recent_orders, many=True)
@@ -120,6 +120,7 @@ def person_add(request):
         # each created customer created with an order 
         description = request.data["description"]
         price = request.data["price"]
+        print(price)
         customer = md.Customer.objects.create(name=name, last=last)
         order = md.Order.objects.create(customer=customer, 
                                         description=description,
@@ -164,6 +165,7 @@ def profile(request, pk):
 
 
 @api_view(["POST", "GET"])
+@permission_classes([IsAuthenticated])
 def order_add(request,pk):
     # get the customer 
     customer = md.Customer.objects.get(pk=pk)
@@ -191,12 +193,13 @@ def order_add(request,pk):
         
         try:
             is_paid = request.data['is_paid']
-            if is_paid == "on":
+            
+            if is_paid or is_paid=="on":
                 who_paid = request.data['who_paid']
                 payment_method = request.data['payment_method']
-                if who_paid == customer.name:
+                if who_paid == customer.name or who_paid==customer.id:
                     order.who_paid = customer
-                elif who_paid == customer.parent.name:
+                elif who_paid == customer.parent.name or who_paid==customer.parent.id:
                     order.who_paid = customer.parent
                 order.payment_method = payment_method
 
@@ -242,7 +245,8 @@ def name_change(request):
         # try to change aprent id to
         try:
             # get parent_id param from post data
-            parent_id = request.data["parent_id"]
+            parent_id = int(request.data["parent_id"])
+            print(parent_id)
             # check db if there is  customer  with that id
             parent = md.Customer.objects.get(pk=parent_id)
             # if there is customer with that id then update parent of customer

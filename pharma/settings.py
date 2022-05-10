@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-cmm%r=-juw7o1jpuin=y5t)&i&0z6x)3jk%og_21qg@mzf#u3^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://pharma-accountant.herokuapp.com/","127.0.0.1","192.168.1.146"]
 
 # Application definition
 
@@ -56,6 +56,8 @@ MIDDLEWARE = [
         # croos origin for react
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    #white noise middleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # cors headers for
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -132,6 +134,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 # where are the all static files
 STATICFILES_DIRS = [
     BASE_DIR / "static",
